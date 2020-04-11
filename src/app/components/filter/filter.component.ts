@@ -58,7 +58,7 @@ export class FilterComponent implements OnInit {
             const carId = res.listings[0].vehicleData[0].vehicle_id;
             const carModel = `${res.listings[0].vehicleData[0].make} ${res.listings[0].vehicleData[0].model}`;
 
-          //if (carId !== this.latestCar.carId) {
+          if (carId !== this.latestCar.carId) {
             new Notification(
               `New car: ${carModel}; Price: ${res.listings[0].price}`,
               {
@@ -66,7 +66,7 @@ export class FilterComponent implements OnInit {
                 
               }
             )
-          //}
+          }
 
           this.latestCar = { carId, carModel };
           console.log(this.latestCar);

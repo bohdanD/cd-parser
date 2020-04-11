@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap";
+
+.header-color {
+    background-color: #f4e04d;
+}
+
+.header-text {
+    color: #8db1ab;
+}

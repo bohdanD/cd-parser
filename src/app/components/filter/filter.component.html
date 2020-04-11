@@ -1,0 +1,33 @@
+
+<div class="row">
+    <div class="ml-4 col-md-11">
+        <div class="form-group">
+            <label for="pickCity">Pick up city</label>
+            <input type="text" [(ngModel)]="pickCity" required class="form-control form-control-lg" id="pickCity">
+        </div>
+        <div class="form-group">
+            <label for="picState">Pick up state</label>
+            <input type="text" [(ngModel)]="pickState" required class="form-control form-control-lg" id="picState">
+            <small id="c1Help" class="form-text text-muted">Text in the fields should be the same as in the site</small>
+        </div>
+        <div class="form-group">
+            <label for="destkCity">Destination city</label>
+            <input type="text" [(ngModel)]="destCity" required class="form-control form-control-lg" id="destkCity">
+        </div>
+        <div class="form-group">
+            <label for="destState">Destination state</label>
+            <input type="text" [(ngModel)]="destState" required class="form-control form-control-lg" id="destState">
+            <small id="c1Help" class="form-text text-muted">Text in the fields should be the same as in the site</small>
+        </div>
+
+        <button class="btn btn-primary" (click)="submit()">Submit</button>
+        <button class="btn btn-danger ml-2" (click)="stop()">Stop</button>
+    </div>
+</div>
+<div class="row mt-3 ml-4" *ngIf="isTracking">
+    <div>Currently tracking:</div>
+    <div>Pick up: {{pickCity}}, {{pickState}};</div>
+    <div>Destination: {{destCity}}, {{destState}};</div>
+    <div>Latest car:</div>
+    <div>Car id: {{latestCar.carId}}; Model: {{latestCar.carModel}}</div>
+</div>

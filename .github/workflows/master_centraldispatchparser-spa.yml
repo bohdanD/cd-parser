@@ -27,9 +27,7 @@ jobs:
         # npm run test --if-present
 
     - name: 'Deploy to Azure Web App'
-      uses: azure/webapps-deploy@v1
+      uses: azure/webapps-deploy@v2
       with:
         app-name: 'centraldispatchparser-spa'
-        slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_c44b6997493a4d6c9776dc44fc882830 }}
-        package: .

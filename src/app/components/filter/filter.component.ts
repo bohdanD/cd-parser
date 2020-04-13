@@ -65,21 +65,21 @@ export class FilterComponent implements OnInit {
             const carId = latest.vehicleData[0].vehicle_id;
             const carModel = `${latest.vehicleData[0].make} ${latest.vehicleData[0].model}`;
 
-          if (carId !== this.latestCar.carId) {
-            new Notification(
-              `New car: ${carModel}; Price: ${latest.price}`,
-              {
-                icon: 'assets/img/centraldispatchlogo.png',
-              }
-            )
+            if (carId !== this.latestCar.carId) {
+              new Notification(
+                `New car: ${carModel}; Price: ${latest.price}`,
+                {
+                  icon: 'assets/img/centraldispatchlogo.png',
+                }
+              )
+            }
+
+            this.latestCar = { carId, carModel };
+            console.log(this.latestCar);
+          } else {
+            console.log('No cars found');
           }
 
-          this.latestCar = { carId, carModel };
-          console.log(this.latestCar);
-          } else {
-            new Notification('No cars found');
-          }
-          
           this.isTracking = true;
         },
         (err) => {

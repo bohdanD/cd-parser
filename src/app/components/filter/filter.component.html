@@ -31,6 +31,12 @@
             <small id="c1Help" class="form-text text-muted">CSRF Token from URL</small>
         </div>
 
+        <div class="form-group" *ngIf="showAuthData">
+            <label for="sessid">PHPSESSID</label>
+            <input type="text" [(ngModel)]="sessid" required class="form-control form-control-lg" id="sessid">
+            <small id="c1Help" class="form-text text-muted">PHPSESSID from cokkie</small>
+        </div>
+
         <button class="btn btn-primary" (click)="submit()">Submit</button>
         <button class="btn btn-danger ml-2" (click)="stop()">Stop</button>
     </div>

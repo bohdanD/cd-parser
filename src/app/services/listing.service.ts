@@ -8,7 +8,7 @@ export class ListingService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getListings(pickCity, pickState, destCity, destState, token) {
-    return this.httpClient.get(`https://centraldispatchparser.azurewebsites.net//get?pickCity=${pickCity}&pickState=${pickState}&destCity=${destCity}&destState=${destState}&token=${token}`);
+  getListings(pickCity, pickState, destCity, destState, token, sessid) {
+    return this.httpClient.get(`https://localhost:44319/get?pickCity=${pickCity}&pickState=${pickState}&destCity=${destCity}&destState=${destState}&token=${token}&sessid=${sessid}`);
   }
 }

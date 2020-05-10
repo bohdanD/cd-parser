@@ -20,6 +20,11 @@
             <small id="c1Help" class="form-text text-muted">Text in the fields should be the same as in the site</small>
         </div>
 
+        <div class="form-group">
+            <label for="email">Email to notify</label>
+            <input type="email" [(ngModel)]="email" required class="form-control form-control-lg" id="email">
+        </div>
+
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="showAuth" [(ngModel)]="showAuthData">
             <label for="showAuth" calss="form-check-label">Show Authentification data</label>

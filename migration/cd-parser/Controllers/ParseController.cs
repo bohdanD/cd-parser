@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -8,6 +11,14 @@ namespace cd_parser.Controllers
   [ApiController]
   public class ParseController : ControllerBase
   {
+
+    private IConfiguration _configuration;
+
+    public ParseController(IConfiguration configuration)
+    {
+      _configuration = configuration;
+    }
+
     [HttpGet]
     [Route("parse")]
     public async Task<ActionResult> Parse(string pickCity, string pickState, string destCity, string destState, string token)
@@ -31,6 +42,23 @@ namespace cd_parser.Controllers
           return NotFound("Error");
         }
       }
+    }
+
+    [HttpPost]
+    [Route("sendmail")]
+    public async void Send([FromBody] EmailInfo emailInfo)
+    {
+      var apiKey = _configuration["SENDGRID_API_KEY"];
+
+      var client = new SendGridClient(apiKey);
+      var msg = new SendGridMessage()
+      {
+        From = new EmailAddress("cdparser@gmail.com", "CD Parser"),
+        Subject = $"New Car! {emailInfo.CarModel} for {emailInfo.Price}.",
+        PlainTextContent = $"Car info. From {emailInfo.Pickup} to {emailInfo.Destination}; Phone: {emailInfo.Phone} Model: {emailInfo.CarModel}; Price {emailInfo.Price}; Price per mile: {emailInfo.PricePerMile}."
+      };
+      msg.AddTo(new EmailAddress(emailInfo.SendTo));
+      var response = await client.SendEmailAsync(msg);
     }
   }
 }

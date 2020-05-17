@@ -56,7 +56,6 @@ export class FilterComponent implements OnInit {
             this.destCity,
             this.destState,
             this.token,
-            this.sessid,
           );
         })
       )
